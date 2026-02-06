@@ -1,23 +1,25 @@
 let player;
 let musicStarted = false;
 
-// 1. API de YouTube
+// 1. Configuración de la API de YouTube
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         height: '0',
         width: '0',
-        videoId: 'ID_DE_TU_VIDEO', // Sustituye por el ID de tu video
+        videoId: 'ID_DE_TU_VIDEO', // <--- CAMBIA ESTO (Ejemplo: dQw4w9WgXcQ)
         playerVars: {
             'autoplay': 1,
             'loop': 1,
-            'playlist': 'ID_DE_TU_VIDEO'
+            'playlist': 'ID_DE_TU_VIDEO' // Mismo ID para que el loop funcione
         },
         events: {
-            'onReady': (event) => {
-                // El video está listo pero el navegador suele bloquearlo hasta interacción
-            }
+            'onReady': onPlayerReady
         }
     });
+}
+
+function onPlayerReady(event) {
+    // El reproductor está cargado
 }
 
 const iniciarMusica = () => {
@@ -33,12 +35,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContainer = document.getElementById('main-container');
     const confirmContainer = document.getElementById('confirmation-container');
 
-    // Función para mover el botón NO
+    // Lógica para que el botón NO escape
     const moveButton = () => {
-        iniciarMusica(); // Iniciamos música al intentar dar al NO
+        iniciarMusica(); // La música empieza al intentar darle al NO
+        
         const padding = 20;
-        const maxLeft = window.innerWidth - noBtn.offsetWidth - padding;
-        const maxTop = window.innerHeight - noBtn.offsetHeight - padding;
+        const btnWidth = noBtn.offsetWidth;
+        const btnHeight = noBtn.offsetHeight;
+        
+        const maxLeft = window.innerWidth - btnWidth - padding;
+        const maxTop = window.innerHeight - btnHeight - padding;
+
         const randomLeft = Math.max(padding, Math.random() * maxLeft);
         const randomTop = Math.max(padding, Math.random() * maxTop);
 
@@ -48,38 +55,45 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     noBtn.addEventListener('mouseover', moveButton);
-    noBtn.addEventListener('click', (e) => { e.preventDefault(); moveButton(); });
+    noBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        moveButton();
+    });
 
-    // Lógica del botón SI
+    // Lógica para el botón SÍ
     yesBtn.addEventListener('click', () => {
-        iniciarMusica(); // Aseguramos música al dar al SI
+        iniciarMusica(); // La música empieza (si no lo hizo ya)
         
-        // Efecto visual: Ocultamos uno y mostramos otro
+        // Cambiar de pantalla sin recargar
         mainContainer.style.display = 'none';
         confirmContainer.style.display = 'flex';
         
-        // Lanzamos la función de lluvia de corazones si quieres incluirla aquí
         lanzarCorazones();
     });
 });
 
-// Función opcional para los corazones (puedes reutilizar la que te di antes)
+// Función para la lluvia de corazones
 function lanzarCorazones() {
     setInterval(() => {
         const heart = document.createElement('div');
+        heart.classList.add('heart');
         heart.innerHTML = '❤️';
-        heart.style.position = 'fixed';
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.top = "-5vh";
         heart.style.fontSize = Math.random() * 20 + 20 + "px";
-        heart.style.transition = "transform 4s linear";
-        heart.style.zIndex = "1000";
+        heart.style.duration = Math.random() * 2 + 3 + "s";
+        
+        // Animación simple de caída
+        const animationDuration = Math.random() * 2 + 3;
+        heart.style.transition = `transform ${animationDuration}s linear`;
+        
         document.body.appendChild(heart);
 
         setTimeout(() => {
-            heart.style.transform = `translateY(110vh)`;
+            heart.style.transform = `translateY(115vh)`;
         }, 100);
 
-        setTimeout(() => { heart.remove(); }, 4100);
+        setTimeout(() => {
+            heart.remove();
+        }, animationDuration * 1000 + 100);
     }, 300);
 }
