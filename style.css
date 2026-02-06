@@ -155,3 +155,44 @@ body, html {
     color: #e91e63;          /* El rosa vibrante para el número */
     font-weight: bold;
 }
+
+/* Contenedor principal de la info final */
+#info-wrapper {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch; /* Para que ambas cajas tengan la misma altura */
+    flex-wrap: wrap;     /* Si es móvil, el mapa bajará debajo del texto */
+    margin-top: 10px;
+}
+
+/* Estilo para la caja del mapa */
+#map-container {
+    background: white;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* El texto de la broma */
+#joke-text {
+    color: #e91e63;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+/* Estilo para el mapa redondeado */
+#map-container iframe {
+    border-radius: 15px;
+}
+
+/* Re-ajustamos un poco el #details original para que encaje bien */
+#details {
+    margin: 0; /* Quitamos márgenes sobrantes */
+    min-width: 250px;
+}
