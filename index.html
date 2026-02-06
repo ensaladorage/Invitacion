@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>San Valentín ❤️</title>
+    <title>Tienes una invitación ❤️</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="main-container" class="container">
+    <div id="envelope-container" class="container">
+        <h1 class="main-text">¡Tienes una invitación! 💌</h1>
+        <div id="envelope" onclick="abrirInvitacion()">
+            <div class="envelope-icon">✉️</div>
+            <p>Haz clic en el sobre para abrirlo</p>
+        </div>
+    </div>
+
+    <div id="main-container" class="container" style="display: none;">
         <h1 class="main-text">¿Quieres tener una cita conmigo en San Valentín? ❤️</h1>
         <div class="buttons-container">
             <button id="yes-btn" class="btn">Si</button>
@@ -21,9 +29,9 @@
     <div id="confirmation-container" class="container" style="display: none;">
         <h1 class="main-text">¡Sabía que dirías que sí! ❤️</h1>
         <div id="details">
-            <p><strong>📍 Lugar:</strong> [Escribe aquí el lugar]</p>
+            <p><strong>📍 Lugar:</strong> [Tu lugar]</p>
             <p><strong>📅 Fecha:</strong> 14 de Febrero, 2026</p>
-            <p><strong>⏰ Hora:</strong> [Escribe aquí la hora]</p>
+            <p><strong>⏰ Hora:</strong> [Tu hora]</p>
         </div>
         <p class="footer-text">¡Será un día inolvidable!</p>
     </div>
