@@ -271,3 +271,43 @@ body, html {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
+/* --- AJUSTES PARA MÓVILES --- */
+@media (max-width: 768px) {
+    body, html {
+        overflow-y: auto; /* Permite scroll si el contenido es muy largo */
+        padding-top: 20px;
+    }
+
+    .main-text {
+        font-size: 1.6rem; /* Texto un poco más pequeño para que no salte de línea feo */
+        padding: 0 15px;
+    }
+
+    .buttons-container {
+        flex-direction: column; /* Botones uno encima de otro */
+        gap: 30px; /* Ya no necesitamos 400px porque no están alineados verticalmente */
+        min-width: unset;
+        width: 100%;
+    }
+
+    #info-wrapper {
+        flex-direction: column; /* Caja de detalles y Mapa uno encima de otro */
+        align-items: center;
+        gap: 20px;
+    }
+
+    #details, .location-card {
+        width: 90%; /* Que ocupen casi todo el ancho del móvil */
+        min-width: unset;
+    }
+
+    #confirmed-gif {
+        width: 80%; /* El perro se adapta al ancho del móvil */
+        max-width: 200px;
+    }
+
+    .envelope-icon {
+        font-size: 150px; /* Sobre un poco más pequeño para que quepa bien */
+    }
+}
