@@ -6,11 +6,12 @@ function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         height: '0',
         width: '0',
-        videoId: 'jkxgmnsqaV8=10', // <--- CAMBIA ESTO (Ejemplo: dQw4w9WgXcQ)
+        videoId: 'jkxgmnsqaV8', 
         playerVars: {
             'autoplay': 1,
             'loop': 1,
-            'playlist': 'jkxgmnsqaV8=10' // Mismo ID para que el loop funcione
+            'playlist': 'jkxgmnsqaV8',
+            'start': 10  // <--- AÑADE ESTA LÍNEA (el número son los segundos)
         },
         events: {
             'onReady': onPlayerReady
