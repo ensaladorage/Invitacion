@@ -36,18 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const moveButton = () => {
         const btnWidth = noBtn.offsetWidth;
         const btnHeight = noBtn.offsetHeight;
-        
-        // Calculamos límites restando el tamaño del botón para que no se salga
         const maxLeft = window.innerWidth - btnWidth - 20;
         const maxTop = window.innerHeight - btnHeight - 20;
 
-        const randomLeft = Math.floor(Math.random() * maxLeft);
-        const randomTop = Math.floor(Math.random() * maxTop);
-
         noBtn.style.position = 'fixed';
-        noBtn.style.left = `${randomLeft}px`;
-        noBtn.style.top = `${randomTop}px`;
-        // Forzamos que esté por encima de todo
+        noBtn.style.left = `${Math.floor(Math.random() * maxLeft)}px`;
+        noBtn.style.top = `${Math.floor(Math.random() * maxTop)}px`;
         noBtn.style.zIndex = "9999";
     };
 
