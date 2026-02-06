@@ -67,12 +67,40 @@ function crearCorazon() {
             heartInterval = setInterval(crearCorazon, 130); // ¡Ritmo triple! (400 / 3 aprox)
             console.log("¡MODO TRIPLE ACTIVADO!");
         }
+        // NIVEL 2: Superar los 20 corazones (Modo Triple)
+        if (score > 50 && !tripleModeActive) {
+            tripleModeActive = true;
+            clearInterval(heartInterval); // Detenemos el ritmo normal
+            heartInterval = setInterval(crearCorazon, 230); // ¡más!
+            console.log("¡MODO TRIPLE ACTIVADO!");
+        }
 
         // NIVEL 2: Superar los 100 corazones (Cambio de GIF)
-        if (score > 50 && !gifChanged) {
+        if (score > 20 && !gifChanged) {
             gifChanged = true;
             // Cambiamos la imagen del perro por la nueva
             document.getElementById('confirmed-gif').src = 'love.gif';
+            console.log("¡GIF FINAL DESBLOQUEADO!");
+        }
+        // NIVEL 3: Superar los 100 corazones (Cambio de GIF)
+        if (score > 30 && !gifChanged) {
+            gifChanged = true;
+            // Cambiamos la imagen del perro por la nueva
+            document.getElementById('confirmed-gif').src = 'pingu.gif';
+            console.log("¡GIF FINAL DESBLOQUEADO!");
+        }
+        // NIVEL 4: Superar los 100 corazones (Cambio de GIF)
+        if (score > 40 && !gifChanged) {
+            gifChanged = true;
+            // Cambiamos la imagen del perro por la nueva
+            document.getElementById('confirmed-gif').src = 'cat.gif';
+            console.log("¡GIF FINAL DESBLOQUEADO!");
+        }
+                // NIVEL 5: Superar los 100 corazones (Cambio de GIF)
+        if (score > 50 && !gifChanged) {
+            gifChanged = true;
+            // Cambiamos la imagen del perro por la nueva
+            document.getElementById('confirmed-gif').src = 'duck.gif';
             console.log("¡GIF FINAL DESBLOQUEADO!");
         }
 
