@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1 class="main-text">¿Quieres tener una cita conmigo en San Valentín?</h1>
+    <div id="main-container" class="container">
+        <h1 class="main-text">¿Quieres tener una cita conmigo en San Valentín? ❤️</h1>
         <div class="buttons-container">
             <button id="yes-btn" class="btn">Si</button>
             <div id="no-btn-wrapper">
@@ -16,6 +16,21 @@
             </div>
         </div>
     </div>
+
+    <div id="confirmation-container" class="container" style="display: none;">
+        <h1 class="main-text">¡Sabía que dirías que sí! ❤️</h1>
+        <div id="details" style="color: #880e4f; font-size: 1.2rem; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            <p><strong>📍 Lugar:</strong> [Tu lugar aquí]</p>
+            <p><strong>📅 Fecha:</strong> 14 de Febrero</p>
+            <p><strong>⏰ Hora:</strong> [Tu hora aquí]</p>
+        </div>
+        <p>¡Va a ser un día increíble!</p>
+    </div>
+
+    <div style="display: none;">
+        <div id="player"></div>
+    </div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script src="script.js"></script>
 </body>
-</html>
