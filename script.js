@@ -43,7 +43,7 @@ function crearCorazon() {
     heart.innerHTML = '❤️';
     heart.style.cssText = `
         position: fixed; top: -10vh; left: ${Math.random() * 100}vw;
-        font-size: ${Math.random() * 60 + 40}px; 
+        font-size: ${Math.random() * 80 + 60}px; 
         transition: top 4s linear, transform 0.2s; 
         z-index: 1000; cursor: crosshair; user-select: none;
     `;
@@ -77,7 +77,7 @@ function crearCorazon() {
         // Nivel 4: 50 corazones
         else if (score === 50) {
             clearInterval(heartInterval);
-            heartInterval = setInterval(crearCorazon, 80); // ¡Modo Locura!
+            heartInterval = setInterval(crearCorazon, 400); // ¡Modo Locura!
             document.getElementById('confirmed-gif').src = 'duck.gif';
             console.log("Nivel 4: Duck madness!");
         }
