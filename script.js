@@ -43,7 +43,7 @@ function crearCorazon() {
     heart.innerHTML = '❤️';
     heart.style.cssText = `
         position: fixed; top: -10vh; left: ${Math.random() * 100}vw;
-        font-size: ${Math.random() * 40 + 30}px; 
+        font-size: ${Math.random() * 60 + 40}px; 
         transition: top 4s linear, transform 0.2s; 
         z-index: 1000; cursor: crosshair; user-select: none;
     `;
