@@ -5,11 +5,11 @@ function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         height: '0',
         width: '0',
-        videoId: 'jkxgmnsqaV8', // <--- CAMBIA TU ID
+        videoId: 'TU_ID_AQUI', 
         playerVars: {
             'autoplay': 1,
             'loop': 1,
-            'playlist': 'jkxgmnsqaV8',
+            'playlist': 'TU_ID_AQUI',
             'start': 10 
         },
         events: {
@@ -18,15 +18,11 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
-// ESTA FUNCIÓN ES LA CLAVE: Se activa al hacer clic en el sobre
 function abrirInvitacion() {
-    // 1. Iniciar música
     if (player && player.playVideo) {
         player.playVideo();
         musicStarted = true;
     }
-
-    // 2. Transición de pantallas
     document.getElementById('envelope-container').style.display = 'none';
     const mainContainer = document.getElementById('main-container');
     mainContainer.style.display = 'flex';
@@ -36,23 +32,31 @@ function abrirInvitacion() {
 document.addEventListener('DOMContentLoaded', () => {
     const yesBtn = document.getElementById('yes-btn');
     const noBtn = document.getElementById('no-btn');
-    const mainContainer = document.getElementById('main-container');
-    const confirmContainer = document.getElementById('confirmation-container');
 
     const moveButton = () => {
-        const padding = 20;
-        const maxLeft = window.innerWidth - noBtn.offsetWidth - padding;
-        const maxTop = window.innerHeight - noBtn.offsetHeight - padding;
+        const btnWidth = noBtn.offsetWidth;
+        const btnHeight = noBtn.offsetHeight;
+        
+        // Calculamos límites restando el tamaño del botón para que no se salga
+        const maxLeft = window.innerWidth - btnWidth - 20;
+        const maxTop = window.innerHeight - btnHeight - 20;
+
+        const randomLeft = Math.floor(Math.random() * maxLeft);
+        const randomTop = Math.floor(Math.random() * maxTop);
+
         noBtn.style.position = 'fixed';
-        noBtn.style.left = `${Math.max(padding, Math.random() * maxLeft)}px`;
-        noBtn.style.top = `${Math.max(padding, Math.random() * maxTop)}px`;
+        noBtn.style.left = `${randomLeft}px`;
+        noBtn.style.top = `${randomTop}px`;
+        // Forzamos que esté por encima de todo
+        noBtn.style.zIndex = "9999";
     };
 
     noBtn.addEventListener('mouseover', moveButton);
     noBtn.addEventListener('click', (e) => { e.preventDefault(); moveButton(); });
 
     yesBtn.addEventListener('click', () => {
-        mainContainer.style.display = 'none';
+        document.getElementById('main-container').style.display = 'none';
+        const confirmContainer = document.getElementById('confirmation-container');
         confirmContainer.style.display = 'flex';
         confirmContainer.classList.add('fade-in');
         lanzarCorazones();
